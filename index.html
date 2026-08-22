@@ -3,79 +3,827 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Opossum Facts!</title>
+
+  <title>Opossums</title>
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header>
-    <h1>Opossum Facts</h1>
-    <p>North America's only native marsupial — more interesting than you might think.</p>
-  </header>
 
-  <nav class="site-nav">
-    <a href="index.html" class="active">Facts</a>
-    <a href="habitat.html">Habitat</a>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* ================================
+       COLORS
+    ================================= */
+
+    :root {
+      --white: #ffffff;
+      --black: #151515;
+      --forest: #234936;
+      --light-green: #edf2ee;
+      --gray: #666666;
+      --border: #e4e7e4;
+    }
+
+
+    /* ================================
+       RESET
+    ================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+
+      font-family: "Montserrat", sans-serif;
+
+      line-height: 1.7;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+
+    /* ================================
+       NAVIGATION
+    ================================= */
+
+    nav {
+      height: 70px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 7%;
+
+      background: white;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+
+      font-size: 1.35rem;
+
+      color: var(--forest);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--black);
+
+      font-size: 0.75rem;
+      font-weight: 600;
+
+      letter-spacing: 1px;
+      text-transform: uppercase;
+
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--forest);
+    }
+
+
+    /* ================================
+       HERO
+    ================================= */
+
+    .hero {
+      height: 420px;
+
+      position: relative;
+
+      display: flex;
+      align-items: flex-end;
+
+      padding: 7%;
+      
+      background:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,0.60),
+          rgba(0,0,0,0.05)
+        ),
+        url("images/hero-opossum.jpg");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-content {
+      color: white;
+
+      max-width: 650px;
+    }
+
+    .hero-label {
+      font-size: 0.75rem;
+
+      font-weight: 600;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 10px;
+
+      color: #dce8df;
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+
+      font-size: clamp(3.2rem, 6vw, 5.5rem);
+
+      font-weight: 500;
+
+      line-height: 1.05;
+
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1rem;
+
+      max-width: 500px;
+
+      color: #f2f2f2;
+    }
+
+
+    /* ================================
+       GENERAL SECTION
+    ================================= */
+
+    section {
+      padding: 85px 7%;
+    }
+
+    .section-intro {
+      max-width: 650px;
+
+      margin: 0 auto 55px;
+
+      text-align: center;
+    }
+
+    .section-label {
+      color: var(--forest);
+
+      font-size: 0.7rem;
+
+      font-weight: 700;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+
+      font-size: clamp(2rem, 4vw, 3rem);
+
+      font-weight: 500;
+
+      line-height: 1.2;
+
+      margin-bottom: 15px;
+    }
+
+    .section-intro p {
+      color: var(--gray);
+
+      font-size: 0.95rem;
+    }
+
+
+    /* ================================
+       FUN FACTS
+    ================================= */
+
+    .facts {
+      background: var(--light-green);
+
+      padding-top: 70px;
+      padding-bottom: 70px;
+    }
+
+    .facts-container {
+      max-width: 1100px;
+
+      margin: 0 auto;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 25px;
+    }
+
+    .fact {
+      background: white;
+
+      padding: 30px;
+
+      border-top: 3px solid var(--forest);
+    }
+
+    .fact-number {
+      color: var(--forest);
+
+      font-size: 0.7rem;
+
+      font-weight: 700;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 12px;
+    }
+
+    .fact h3 {
+      font-family: "Playfair Display", serif;
+
+      font-size: 1.4rem;
+
+      font-weight: 500;
+
+      margin-bottom: 8px;
+    }
+
+    .fact p {
+      color: var(--gray);
+
+      font-size: 0.85rem;
+
+      line-height: 1.65;
+    }
+
+
+    /* ================================
+       INFORMATION SECTION
+    ================================= */
+
+    .information {
+      max-width: 1050px;
+
+      margin: auto;
+
+      padding-top: 95px;
+      padding-bottom: 30px;
+    }
+
+    .info-row {
+      display: grid;
+
+      grid-template-columns:
+        300px 1fr;
+
+      gap: 80px;
+
+      align-items: center;
+
+      margin-bottom: 90px;
+    }
+
+    /* Alternate the image */
+
+    .info-row.reverse {
+      grid-template-columns:
+        1fr 300px;
+    }
+
+    .info-row.reverse .circle-image {
+      order: 2;
+    }
+
+
+    /* ================================
+       CIRCLE IMAGES
+    ================================= */
+
+    .circle-image {
+      width: 300px;
+      height: 300px;
+
+      border-radius: 50%;
+
+      overflow: hidden;
+
+      border: 7px solid var(--light-green);
+    }
+
+    .circle-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition: transform 0.5s ease;
+    }
+
+    .circle-image:hover img {
+      transform: scale(1.05);
+    }
+
+
+    /* ================================
+       INFORMATION TEXT
+    ================================= */
+
+    .info-number {
+      color: var(--forest);
+
+      font-size: 0.7rem;
+
+      font-weight: 700;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 8px;
+    }
+
+    .info-text h2 {
+      font-family: "Playfair Display", serif;
+
+      font-size: 2.2rem;
+
+      font-weight: 500;
+
+      line-height: 1.2;
+
+      margin-bottom: 15px;
+    }
+
+    .info-text p {
+      color: var(--gray);
+
+      font-size: 0.9rem;
+
+      max-width: 580px;
+    }
+
+    /* ================================
+   CONSERVATION
+================================= */
+
+.conservation {
+  padding: 75px 7%;
+  background: #ffffff;
+  text-align: center;
+}
+
+.conservation-content {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.conservation h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.conservation p {
+  color: var(--gray);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+    /* ================================
+       FOOTER
+    ================================= */
+
+    footer {
+      margin-top: 20px;
+
+      padding: 55px 7%;
+
+      background: var(--forest);
+
+      color: white;
+
+      text-align: center;
+    }
+
+    footer h2 {
+      font-family: "Playfair Display", serif;
+
+      font-size: 1.8rem;
+
+      font-weight: 500;
+
+      margin-bottom: 8px;
+    }
+
+    footer p {
+      color: #d4dfd8;
+
+      font-size: 0.75rem;
+    }
+
+
+    /* ================================
+       MOBILE
+    ================================= */
+
+    @media (max-width: 750px) {
+
+      nav {
+        height: 65px;
+
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        height: 520px;
+
+        padding: 8% 6%;
+      }
+
+      .hero h1 {
+        font-size: 3.2rem;
+      }
+
+      section {
+        padding: 65px 6%;
+      }
+
+      .facts {
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+
+      .facts-container {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+      }
+
+      .information {
+        padding-top: 70px;
+      }
+
+      .info-row,
+      .info-row.reverse {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+        margin-bottom: 75px;
+
+        text-align: center;
+      }
+
+      .info-row.reverse .circle-image {
+        order: 0;
+      }
+
+      .circle-image {
+        width: 240px;
+        height: 240px;
+
+        margin: auto;
+      }
+
+      .info-text p {
+        margin: auto;
+      }
+
+      .info-text h2 {
+        font-size: 1.9rem;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- ================================
+       NAVIGATION
+  ================================= -->
+
+  <nav>
+
+    <ul class="nav-links">
+
+
+
+    </ul>
+
   </nav>
 
-  <div class="hero-image">
-    <img src="images/image01.jpg" alt="Virginia opossum with purple grapes">
-  </div>
 
-  <main>
-    <p class="intro">
-      Opossums are often misunderstood backyard visitors. They're shy, helpful
-      pest controllers, and full of surprising adaptations. Here are a few
-      things worth knowing about them.
+  <!-- ================================
+       HERO
+  ================================= -->
+
+  <header class="hero">
+
+    <div class="hero-content">
+
+      <div class="hero-label">
+       Facts  • Habitat • Conservation
+      </div>
+
+      <h1>
+        Opossums
+      </h1>
+
+      <p>
+        <!-- ADD YOUR CATCHPHRASE HERE -->
+
+        Our underappreciated neighbour
+      </p>
+
+    </div>
+
+  </header>
+
+
+  <!-- ================================
+       FUN FACTS
+  ================================= -->
+
+  <section class="facts" id="facts">
+
+    <div class="section-intro">
+
+      <div class="section-label">
+        Quick Facts
+      </div>
+
+      <h2 class="section-title">
+        Meet the night shift!
+      </h2>
+
+      <p>
+        <!-- Optional introductory sentence -->
+        Working quietly after dark, opossums play an important role in keeping ecosystems healthy.
+      </p>
+
+    </div>
+
+
+    <div class="facts-container">
+
+
+      <!-- FACT ONE -->
+
+      <article class="fact">
+
+        <div class="fact-number">
+          01
+        </div>
+
+        <h3>
+            Lone Marsupial
+        </h3>
+
+        <p>
+            The Virginia opossum is the only marsupial found north of Mexico. Like kangaroos and other marsupials, mothers carry their young in a pouch during their early development.
+        </p>
+
+      </article>
+
+
+      <!-- FACT TWO -->
+
+      <article class="fact">
+
+        <div class="fact-number">
+          02
+        </div>
+
+        <h3>
+            Surprisingly Resistant
+        </h3>
+
+        <p>
+            Opossums are highly resistant to rabies. Their naturally low body temperature is thought to make them a poor host for the rabies virus, so rabies infections in opossums are relatively uncommon. 
+        </p>
+
+      </article>
+
+
+      <!-- FACT THREE -->
+
+      <article class="fact">
+
+        <div class="fact-number">
+          03
+        </div>
+
+        <h3>
+          Gentle Nature
+        </h3>
+
+        <p>
+            Despite having 50 sharp teeth, opossums are generally shy and non-aggressive animals that prefer to avoid confrontation. When threatened, they may bare their teeth and hiss, but their first instinct is usually to get away rather than fight.        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================================
+       THREE INFORMATION SECTIONS
+  ================================= -->
+
+  <section class="information" id="information">
+
+
+    <!-- ============================
+         INFORMATION ONE
+    ============================= -->
+
+    <div class="info-row">
+
+      <div class="circle-image">
+
+        <img
+          src="images/habitat.jpg"
+          alt="Opossum habitat"
+        >
+
+      </div>
+
+      <div class="info-text">
+
+        <div class="info-number">
+          HABITAT
+        </div>
+
+        <h2>
+          Where They Live
+        </h2>
+
+        <p>
+          <!-- ADD YOUR INFORMATION HERE -->
+
+          Opossums are found across much of North and Central America, ranging from southern Ontario and Quebec south through the United States, Mexico, and Central America. In Ontario, they are most common in the southern part of the province, around the Great Lakes. They are highly adaptable and can live in forests, wetlands, farmland, and even suburban areas. Climate change is affecting where they can survive: milder winters may allow them to expand farther north, but increasingly unpredictable weather and extreme conditions can still threaten their survival. 
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- ============================
+         INFORMATION TWO
+    ============================= -->
+
+    <div class="info-row reverse">
+
+      <div class="circle-image">
+
+        <img
+          src="images/behavior.jpg"
+          alt="Opossum in its habitat"
+        >
+
+      </div>
+
+      <div class="info-text">
+
+        <div class="info-number">
+          BEHAVIOR
+        </div>
+
+        <h2>
+          Life After Dark
+        </h2>
+
+        <p>
+          <!-- ADD YOUR INFORMATION HERE -->
+
+          Opossums are nocturnal and most active between dusk and dawn, when they emerge to search for food and explore their surroundings. Opossums are famous for their tendency to “play dead” when threatened. This isn’t a conscious act or a clever performance; it’s an involuntary response to stress that causes the opossum to become completely still and appear lifeless. The state can last from minutes to several hours, giving a potential predator a reason to lose interest.
+
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- ============================
+         INFORMATION THREE
+    ============================= -->
+
+    <div class="info-row">
+
+      <div class="circle-image">
+
+        <img
+          src="images/opossum.jpg"
+          alt="Opossum"
+        >
+
+      </div>
+
+      <div class="info-text">
+
+        <div class="info-number">
+          IMPORTANCE
+        </div>
+
+        <h2>
+          Why They Matter
+        </h2>
+
+        <p>
+          <!-- ADD YOUR INFORMATION HERE -->
+
+          Opossums play an important role in their ecosystems as both scavengers and predators. They help clean up animal remains and consume a wide variety of insects, small mammals, reptiles, and other animals. They can even prey on venomous snakes. Opossums also groom themselves frequently, consuming many of the ticks that attach to their bodies. By helping control insects and other small animals, opossums quietly contribute to the health of their ecosystems. 
+        </p>
+
+      </div>
+
+    </div>
+
+
+  </section>
+
+<!-- ================================
+     CONSERVATION
+================================= -->
+
+<section class="conservation">
+
+  <div class="conservation-content">
+
+    <div class="section-label">
+      Conservation
+    </div>
+
+    <h2>
+      Protecting Their Home
+    </h2>
+
+    <p>
+      Opossums are adaptable animals, but they still depend
+      on healthy habitats and safe places to shelter.
+      Protecting forests, wetlands, and connected natural
+      spaces helps opossums and the many other species that
+      share their environment.
     </p>
 
-    <ul class="facts">
-      <li>
-        <strong>North America's only marsupial</strong>
-        Like kangaroos, female opossums carry their young in a pouch. Babies,
-        called joeys, stay there until they're old enough to ride on their
-        mother's back.
-      </li>
-      <li>
-        <strong>They "play dead"</strong>
-        When threatened, an opossum may collapse, go stiff, and drool — a
-        defense called thanatosis. Predators often lose interest in what looks
-        like a dead animal.
-      </li>
-      <li>
-        <strong>Natural tick control</strong>
-        Opossums groom constantly and eat ticks they find on themselves. A
-        single opossum can consume thousands of ticks in one season, helping
-        reduce tick populations near homes.
-      </li>
-      <li>
-        <strong>More teeth than any North American mammal</strong>
-        Opossums have 50 teeth — more than any other mammal on the continent.
-        They use them to eat fruit, insects, small animals, and even carrion.
-      </li>
-      <li>
-        <strong>Immune to most snake venom</strong>
-        Opossums produce a protein that neutralizes venom from rattlesnakes
-        and other pit vipers, letting them eat snakes that would be deadly
-        to most animals.
-      </li>
-      <li>
-        <strong>Prehensile tail and opposable thumbs</strong>
-        Their hairless tail can grip branches for balance, and their hind feet
-        have opposable thumbs — useful for climbing and grasping food.
-      </li>
-      <li>
-        <strong>Mostly nocturnal and solitary</strong>
-        Opossums come out at night to forage alone. They're generally
-        non-aggressive and prefer to avoid confrontation rather than fight.
-      </li>
-    </ul>
-  </main>
+  </div>
+
+</section>
+
+  <!-- ================================
+       FOOTER
+  ================================= -->
 
   <footer>
-    <p>Built with appreciation for an underrated neighbor.</p>
+
+    <p>
+        Opossum Facts - Built with great appreciation for our underrated neighbor.
+    </p>
+
   </footer>
+
+
 </body>
 </html>
